@@ -1,0 +1,28 @@
+package com.example.code_hero
+
+import com.example.code_hero.model.Connection
+import okhttp3.Interceptor
+import okhttp3.Response
+
+class BaseInterceptor : Interceptor {
+
+    override fun intercept(chain: Interceptor.Chain): Response {
+
+        val original = chain.request()
+        val originalHttpUrl = original.url
+
+        val url = originalHttpUrl.newBuilder()
+            .addQueryParameter("ts", "1")
+            .addQueryParameter("apikey", Connection.PUBLIC_KEY)
+            .addQueryParameter("hash", Connection.HASH)
+            .build()
+
+        // Request customization: add request headers
+        val requestBuilder = original.newBuilder()
+            .url(url)
+
+        val request = requestBuilder.build()
+        return chain.proceed(request)
+
+    }
+}
