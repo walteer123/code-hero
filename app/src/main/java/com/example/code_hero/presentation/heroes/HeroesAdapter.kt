@@ -1,4 +1,4 @@
-package com.example.code_hero.ui.recyclerview.adapter
+package com.example.code_hero.presentation.heroes
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.code_hero.R
-import com.example.code_hero.model.data.Character
+import com.example.code_hero.data.entity.Character
 import kotlinx.android.synthetic.main.item_hero.view.*
 
 class HeroesAdapter(

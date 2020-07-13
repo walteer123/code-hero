@@ -1,17 +1,11 @@
-package com.example.code_hero.ui.heroes
+package com.example.code_hero.presentation.heroes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.code_hero.R
-import com.example.code_hero.model.Connection
-import com.example.code_hero.model.data.Character
-import com.example.code_hero.model.data.CharacterDataWrapper
-import com.example.code_hero.ui.recyclerview.adapter.HeroesAdapter
+import com.example.code_hero.data.entity.CharacterRemote
 import kotlinx.android.synthetic.main.activity_heroes.*
 
 class HeroesActivity : AppCompatActivity() {
@@ -35,7 +29,7 @@ class HeroesActivity : AppCompatActivity() {
 
     }
 
-    private fun handleData(result: CharacterDataWrapper?) {
+    private fun handleData(result: CharacterRemote?) {
         if (result?.code ==  200) {
             val data = result.data
             adapter.updateList(data.results.toMutableList())

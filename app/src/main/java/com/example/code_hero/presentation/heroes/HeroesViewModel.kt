@@ -1,11 +1,8 @@
-package com.example.code_hero.ui.heroes
+package com.example.code_hero.presentation.heroes
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.example.code_hero.model.Connection
-import com.example.code_hero.model.data.CharacterDataWrapper
+import com.example.code_hero.Connection
 import kotlinx.coroutines.Dispatchers
 
 

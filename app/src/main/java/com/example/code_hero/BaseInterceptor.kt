@@ -1,6 +1,5 @@
 package com.example.code_hero
 
-import com.example.code_hero.model.Connection
 import okhttp3.Interceptor
 import okhttp3.Response
 

@@ -1,4 +1,4 @@
-package com.example.code_hero.model.data
+package com.example.code_hero.data.entity
 
 data class Character (
     val id : Int,

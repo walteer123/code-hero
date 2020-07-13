@@ -1,8 +1,6 @@
-package com.example.code_hero.model
+package com.example.code_hero
 
-import com.example.code_hero.BaseInterceptor
-import com.example.code_hero.model.service.HeroesService
-import okhttp3.Interceptor
+import com.example.code_hero.data.HeroesService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
