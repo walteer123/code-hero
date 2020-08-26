@@ -2,6 +2,11 @@ package com.example.code_hero.di
 
 import com.example.code_hero.BaseInterceptor
 import com.example.code_hero.data.HeroesService
+import com.example.code_hero.domain.HeroesRepository
+import com.example.code_hero.domain.HeroesRepositoryImpl
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,11 +20,7 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 object NetworkModule {
 
-
     const val BASE_URL = "http://gateway.marvel.com/v1/public/"
-    const val PUBLIC_KEY = "9a84b6889039db500c250b40e104b070"
-    const val HASH = "825389ab214ff3ae12d22e49dbe953c2"
-
 
     private val okHttpClient by lazy {
         OkHttpClient.Builder()
@@ -37,6 +38,35 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideHeroesService() = retrofit.create(HeroesService::class.java)
-    
+    fun provideGson() = GsonBuilder().create()
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient() = OkHttpClient.Builder()
+        .addInterceptor(BaseInterceptor())
+        .build()
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient) = Retrofit.Builder()
+        .client(okHttpClient)
+        .baseUrl("http://gateway.marvel.com/v1/public/")
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .build()
+
+    @Provides
+    @Singleton
+    fun provideHeroesService(retrofit: Retrofit) = retrofit.create(HeroesService::class.java)
+
+    @Module
+    @InstallIn(ApplicationComponent::class)
+    abstract class RepositoryModule {
+
+        @Binds
+        abstract fun provideHeroesRepository(repositoryImpl: HeroesRepositoryImpl): HeroesRepository
+
+    }
+
 }
+
+

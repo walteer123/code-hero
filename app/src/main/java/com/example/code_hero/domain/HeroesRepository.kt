@@ -8,5 +8,4 @@ interface HeroesRepository {
 
     suspend fun getCharacters() : Response<RemoteData<Character>>
 
-
 }

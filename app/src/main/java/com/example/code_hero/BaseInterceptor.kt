@@ -5,6 +5,11 @@ import okhttp3.Response
 
 class BaseInterceptor : Interceptor {
 
+    companion object {
+        const val PUBLIC_KEY = "9a84b6889039db500c250b40e104b070"
+        const val HASH = "825389ab214ff3ae12d22e49dbe953c2"
+    }
+
     override fun intercept(chain: Interceptor.Chain): Response {
 
         val original = chain.request()
@@ -12,8 +17,8 @@ class BaseInterceptor : Interceptor {
 
         val url = originalHttpUrl.newBuilder()
             .addQueryParameter("ts", "1")
-            .addQueryParameter("apikey", Connection.PUBLIC_KEY)
-            .addQueryParameter("hash", Connection.HASH)
+            .addQueryParameter("apikey", PUBLIC_KEY)
+            .addQueryParameter("hash", HASH)
             .build()
 
         // Request customization: add request headers
