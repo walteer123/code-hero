@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_heroes.*
 @AndroidEntryPoint
 class HeroesActivity : AppCompatActivity() {
 
-    private val viewModel : HeroesViewModel by viewModels()
+    private val viewModel by viewModels<HeroesViewModel>()
 
     val adapter by lazy { HeroesAdapter(this) }
 
@@ -22,7 +22,7 @@ class HeroesActivity : AppCompatActivity() {
         recycler_heroes.adapter = adapter
 
         viewModel.characters.observe(this, Observer {
-            adapter.updateList(it.data.results.toMutableList())
+            adapter.updateList(it)
         })
 
         viewModel.getCharactersList()

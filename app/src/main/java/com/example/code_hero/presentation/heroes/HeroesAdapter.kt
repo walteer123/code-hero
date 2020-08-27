@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.code_hero.R
-import com.example.code_hero.data.entity.Character
+import com.example.code_hero.data.entity.CharacterRemote
 import kotlinx.android.synthetic.main.item_hero.view.*
 
 class HeroesAdapter(
     val context : Context,
-    var items : MutableList<Character> = mutableListOf()
+    var items : List<CharacterRemote> = listOf()
 ):  RecyclerView.Adapter<HeroesAdapter.ViewHolder>() {
 
 
@@ -33,7 +33,7 @@ class HeroesAdapter(
 
     inner class ViewHolder(itemView : View) :  RecyclerView.ViewHolder(itemView){
 
-        private lateinit var item: Character
+        private lateinit var item: CharacterRemote
 
         init {
             itemView.setOnClickListener {
@@ -44,14 +44,14 @@ class HeroesAdapter(
         }
 
 
-        fun bind(item: Character) {
+        fun bind(item: CharacterRemote) {
             this.item = item
             itemView.item_hero_name.text = item.name
-            itemView.item_hero_desc.text = item.description
+            itemView.item_hero_desc.text = item.type
         }
     }
 
-    fun updateList(newItems: MutableList<Character>) {
+    fun updateList(newItems: List<CharacterRemote>) {
 
         val diff = DiffUtil.calculateDiff(object: DiffUtil.Callback(){
             override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean
