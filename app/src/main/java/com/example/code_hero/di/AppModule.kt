@@ -1,6 +1,6 @@
 package com.example.code_hero.di
 
-import com.example.code_hero.data.HeroesService
+import com.example.code_hero.data.service.HeroesService
 import com.example.code_hero.data.repository.HeroesRepository
 import com.example.code_hero.data.repository.HeroesRepositoryImpl
 import dagger.Module

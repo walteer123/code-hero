@@ -1,2 +1,3 @@
+include ':locations'
 include ':app'
 rootProject.name='Code-Hero'

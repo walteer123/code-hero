@@ -1,6 +1,6 @@
 package com.example.code_hero.data.repository
 
-import com.example.code_hero.data.HeroesService
+import com.example.code_hero.data.service.HeroesService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 

@@ -24,9 +24,6 @@ class HeroesActivity : AppCompatActivity() {
         viewModel.characters.observe(this, Observer {
             adapter.updateList(it)
         })
-
-        viewModel.getCharactersList()
-
     }
 
 }
